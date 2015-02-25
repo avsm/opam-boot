@@ -48,10 +48,13 @@ if [ "$CUSTOMPATH" = "1" ]; then
 fi
 
 if [ ! -d "${OPAMROOT}" ]; then
-  opam init -a
+  if [ "$OCAML_VERSION" = "" ]; then
+    opam init -a --comp=4.02.1
+  else
+    opam init -a
+  fi
 fi
 
-export OPAMDEBUG=1
 opam pin add $1 .
 
 echo The $1 package is now built and installed within the .opam directory.
