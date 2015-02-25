@@ -1,0 +1,58 @@
+#!/bin/sh -e
+
+V=1.2.1-beta3
+FILE=opam-full-${V}.tar.gz
+URL=https://github.com/ocaml/opam/releases/download/${V}/${FILE}
+
+OPAM_VERSION=`opam --version 2>/dev/null || true`
+OCAML_VERSION=`ocamlc -version 2>/dev/null || true`
+
+PKG=$1
+
+if [ "$PKG" = "" ]; then
+  echo "Usage: $0 <package-name>"
+  echo ""
+  echo "<package-name>: name of the OPAM package being built"
+  exit 1
+fi
+
+OBJ=`pwd`/_obj
+if [ "$OPAM_VERSION" = "" ]; then
+  echo OPAM not installed, performing a local installation
+  rm -rf ${OBJ}
+  mkdir -p ${OBJ}
+  cd ${OBJ}
+  curl -OL ${URL}
+  tar -zxvf ${FILE}
+  cd opam-full-${V}
+  if [ "$OCAML_VERSION" = "" ]; then
+    echo OCaml not installed, performing a local installation
+    make cold CONFIGURE_ARGS="--prefix=${OBJ}"
+  else
+    ./configure --prefix=${OBJ}
+    make
+    make install
+  fi
+  export PATH=$PATH:$OBJ/bin
+  CUSTOMPATH=1
+  cd ${OBJ}/..
+fi
+
+export OPAMYES=1
+export OPAMJOBS=2
+export OPAMROOT=`pwd`/.opam
+
+if [ ! -d "${OPAMROOT}" ]; then
+  opam init -a
+fi
+
+opam pin add $1 .
+
+echo The $1 package is now built and installed within the .opam directory.
+echo To use it locally, run these commands on your shell:
+echo ""
+echo "  export OPAMROOT=\"$OPAMROOT\""
+if [ "$CUSTOMPATH" = "1" ]; then
+  echo "  export PATH=\$PATH:$OBJ/bin"
+fi
+echo "  eval \`opam config env\`"
