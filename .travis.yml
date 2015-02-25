@@ -1,0 +1,6 @@
+language: c
+script: bash -ex .travis-ci.sh
+env:
+  - MODE=cold
+  - MODE=ocaml
+  - MODE=opam
