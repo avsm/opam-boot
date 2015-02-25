@@ -32,8 +32,8 @@ if [ "$OPAM_VERSION" = "" ]; then
     ./configure --prefix=${OBJ}
     make lib-ext
     make
-    make install
   fi
+  make install
   export PATH=$PATH:$OBJ/bin
   CUSTOMPATH=1
   cd ${OBJ}/..
