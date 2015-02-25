@@ -1,4 +1,4 @@
-#!/bin/sh -e
+#!/bin/sh -ex
 
 V=1.2.1-beta3
 FILE=opam-full-${V}.tar.gz
@@ -41,6 +41,7 @@ fi
 
 export OPAMYES=1
 export OPAMJOBS=2
+export OPAMDEBUG=1
 export OPAMROOT=`pwd`/.opam
 
 if [ "$CUSTOMPATH" = "1" ]; then
