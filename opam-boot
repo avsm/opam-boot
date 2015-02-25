@@ -30,6 +30,7 @@ if [ "$OPAM_VERSION" = "" ]; then
     make cold CONFIGURE_ARGS="--prefix=${OBJ}"
   else
     ./configure --prefix=${OBJ}
+    make lib-ext
     make
     make install
   fi
