@@ -23,7 +23,7 @@ if [ "$OPAM_VERSION" = "" ]; then
   mkdir -p ${OBJ}
   cd ${OBJ}
   curl -OL ${URL}
-  tar -zxvf ${FILE}
+  tar -zxf ${FILE}
   cd opam-full-${V}
   if [ "$OCAML_VERSION" = "" ]; then
     echo OCaml not installed, performing a local installation
