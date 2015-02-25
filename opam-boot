@@ -41,7 +41,6 @@ fi
 
 export OPAMYES=1
 export OPAMJOBS=2
-export OPAMDEBUG=1
 export OPAMROOT=`pwd`/.opam
 
 if [ "$CUSTOMPATH" = "1" ]; then
@@ -52,6 +51,7 @@ if [ ! -d "${OPAMROOT}" ]; then
   opam init -a
 fi
 
+export OPAMDEBUG=1
 opam pin add $1 .
 
 echo The $1 package is now built and installed within the .opam directory.
