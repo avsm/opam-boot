@@ -43,6 +43,10 @@ export OPAMYES=1
 export OPAMJOBS=2
 export OPAMROOT=`pwd`/.opam
 
+if [ "$CUSTOMPATH" = "1" ]; then
+  export PATH=$PATH:$OBJ/bin
+fi
+
 if [ ! -d "${OPAMROOT}" ]; then
   opam init -a
 fi
