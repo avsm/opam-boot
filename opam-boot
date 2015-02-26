@@ -1,4 +1,4 @@
-#!/bin/sh -ex
+#!/bin/sh -e
 
 V=1.2.1-beta3
 FILE=opam-full-${V}.tar.gz
@@ -42,7 +42,7 @@ if [ "$OPAM_VERSION" = "" ]; then
 fi
 
 export OPAMYES=1
-#export OPAMJOBS=2
+export OPAMJOBS=2
 
 . ${ENV}
 if [ ! -d "${OPAMROOT}" ]; then

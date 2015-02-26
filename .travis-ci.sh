@@ -9,10 +9,6 @@ case "$OCAML_VERSION,$OPAM_VERSION" in
 *) echo Unknown $OCAML_VERSION,$OPAM_VERSION; exit 1 ;;
 esac
 
-git clone git://github.com/avsm/ocaml-github
-cp opam-boot ocaml-github
-cd ocaml-github
-
 case "$MODE" in
 ocaml)
   echo "yes" | sudo add-apt-repository ppa:$ppa
@@ -29,6 +25,10 @@ opam)
   ;;
 esac
   
+git clone git://github.com/avsm/ocaml-github
+cp opam-boot ocaml-github
+cd ocaml-github
+
 ./opam-boot github
 . ./opam-env.sh
 which git-jar
