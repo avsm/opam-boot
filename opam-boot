@@ -42,7 +42,7 @@ if [ "$OPAM_VERSION" = "" ]; then
 fi
 
 export OPAMYES=1
-export OPAMJOBS=2
+#export OPAMJOBS=2
 
 . ${ENV}
 if [ ! -d "${OPAMROOT}" ]; then
