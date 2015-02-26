@@ -53,7 +53,7 @@ if [ ! -d "${OPAMROOT}" ]; then
   fi
 fi
 
-echo "eval \`opam config env\'" >> ${ENV}
+echo "eval \`opam config env\`" >> ${ENV}
 opam pin add $1 .
 
 echo The $1 package is now built and installed within the .opam directory.
