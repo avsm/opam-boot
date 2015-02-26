@@ -29,5 +29,5 @@ opam)
 esac
   
 ./opam-boot github
-
-ls .opam/system/bin
+. ./opam-env.sh
+which git-jar
