@@ -79,7 +79,7 @@ else
   fi
   make install
   echo "export PATH=$OBJ/bin:\$PATH" >> ${ENV}
-  cd ${OBJ}/..
+  cd ${OBJ}
 fi
 
 export OPAMYES=1
