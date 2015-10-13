@@ -1,3 +1,5 @@
+set -x # debug
+
 OCAML_VERSION=4.02.1
 OPAM_VERSION=1.2.1
 
