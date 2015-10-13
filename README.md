@@ -15,8 +15,9 @@ users to compile an application with minimal toolchain requirement.
 To use it, just:
 
 * copy the `opam-boot` script into your own source tree
+* decide where to put the build output. This should be outside the main source tree.
 * add a local `opam` file to describe the project using the [pinning workflow](https://opam.ocaml.org/blog/opam-1-2-pin/)
-* tell users to run `opam-boot <package-name>` to perform a local build.
+* tell users to run `opam-boot build <package-name> --obj <build_dir>` to perform a local build, placing artifacts in <build_dir>.
 
 ## TODO
 
