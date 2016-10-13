@@ -1,3 +1,5 @@
+set -x # debug
+
 OCAML_VERSION=4.02.1
 OPAM_VERSION=1.2.1
 
@@ -25,10 +27,12 @@ opam)
   ;;
 esac
   
-git clone git://github.com/avsm/ocaml-github
+git clone git://github.com/mirage/ocaml-github
 cp opam-boot ocaml-github
+OBJ=`pwd`/_obj
+mkdir -p ${OBJ}
 cd ocaml-github
 
-./opam-boot github
-. ./opam-env.sh
+./opam-boot build github --obj ${OBJ}
+. ${OBJ}/opam-env.sh
 which git-jar
