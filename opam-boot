@@ -89,9 +89,9 @@ export OPAMJOBS=2
 . ${ENV}
 if [ ! -d "${OPAMROOT}" ]; then
   if [ "$OCAML_VERSION" = "$AVAILABLE_OCAML_VERSION" ]; then
-    opam init -a
+    opam init -n
   else
-    opam init -a --comp=$OCAML_VERSION
+    opam init -n --comp=$OCAML_VERSION
   fi
 else
   if [ "$OCAML_VERSION" != "$AVAILABLE_OCAML_VERSION" ]; then
