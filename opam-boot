@@ -27,7 +27,7 @@ while [[ $# > 0 ]]; do
     shift # past argument
     ;;
     *)
-    echo "Usage: $0 [--opam=$OPAM_VERSION] [--ocaml=$OCAML_VERSION] [--obj=$OBJ] [build <name>]"
+    echo "Usage: $0 [--opam $OPAM_VERSION] [--ocaml $OCAML_VERSION] [--obj $OBJ] [build <name>]"
     echo ""
     echo "Construct an OCaml build environment from scratch with the given version"
     echo "of OPAM, the given OCaml version and place it in the given obj directory."
