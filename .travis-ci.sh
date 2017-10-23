@@ -1,13 +1,17 @@
 set -x # debug
 
-OCAML_VERSION=4.02.1
-OPAM_VERSION=1.2.1
+# OCaml/OPAM version for selecting the PPA
+OCAML_VERSION=4.02.3
+OPAM_VERSION=1.2.2
+
+# OCaml version for ocaml-github (requires >= 4.03.0)
+G_OCAML_VERSION=4.03.0
 
 case "$OCAML_VERSION,$OPAM_VERSION" in
-4.00.1,1.2.0) ppa=avsm/ocaml40+opam12 ;;
-4.01.0,1.2.0) ppa=avsm/ocaml41+opam12 ;;
-4.02.1,1.2.0) ppa=avsm/ocaml42+opam12 ;;
-4.02.1,1.2.1) ppa=avsm/ppa-opam-experimental ;;
+4.00.1,1.2.1) ppa=avsm/ocaml40+opam12 ;;
+4.01.0,1.2.1) ppa=avsm/ocaml41+opam12 ;;
+4.02.3,1.2.2) ppa=avsm/ocaml42+opam12 ;;
+# 4.02.3,1.2.2) ppa=avsm/ppa-opam-experimental ;;
 *) echo Unknown $OCAML_VERSION,$OPAM_VERSION; exit 1 ;;
 esac
 
@@ -33,6 +37,6 @@ OBJ=`pwd`/_obj
 mkdir -p ${OBJ}
 cd ocaml-github
 
-./opam-boot build github --obj ${OBJ}
+./opam-boot --ocaml "$G_OCAML_VERSION" build github-unix --obj ${OBJ}
 . ${OBJ}/opam-env.sh
 which git-jar
